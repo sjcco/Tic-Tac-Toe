@@ -59,7 +59,7 @@ while player2.empty?
   player2 = '' if player1 == player2
 end
 system('clear') || system('cls')
-print <<~HEREDOC
+print '
         Player 1            Player 2
           █████╗             ██╗  ██╗
         ██╔═══██╗            ╚██╗██╔╝
@@ -67,8 +67,7 @@ print <<~HEREDOC
         ██║   ██║             ██╔██╗
         ╚██████╔╝            ██╔╝ ██╗
          ╚═════╝             ╚═╝  ╚═╝
-  
-HEREDOC
+'
 sleep 2
 system('clear') || system('cls')
 puts '                                READY'
