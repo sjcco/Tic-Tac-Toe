@@ -90,7 +90,6 @@ system('clear') || system('cls')
     puts 'not in range' unless cell.to_i.between?(1, 9)
     player1_turn = false if cell.to_i.between?(1, 9)
   end
-  cell = 0
   player2_turn = true
   while player2_turn
     puts "      #{player2} pick a cell".red
