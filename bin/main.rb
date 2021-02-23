@@ -79,9 +79,8 @@ system('clear') || system('cls')
 puts '                                  GO'
 sleep 0.7
 system('clear') || system('cls')
-game_running = true
 
-while game_running
+9.times do
   player1_turn = true
   while player1_turn
     puts "      #{player1} pick a cell".blue
@@ -102,3 +101,4 @@ while game_running
     player2_turn = false if cell.to_i.between?(1, 9)
   end
 end
+puts 'its a tie'
