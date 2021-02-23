@@ -104,6 +104,10 @@ def display_draw
 ".yellow
 end
 
+def display_play_again
+  '                                      Press "y" to play again'
+end
+
 puts intro.green
 gets
 display_clear
@@ -137,5 +141,11 @@ puts '                                  GO'
 sleep 0.7
 display_clear
 
-new_game = Game.new(player1, player2)
-new_game.play
+play_again = 'y'
+while play_again == 'y'
+  new_game = Game.new(player1, player2)
+  new_game.play
+  puts display_play_again
+  play_again = gets.chomp
+  display_clear
+end
