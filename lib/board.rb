@@ -5,8 +5,8 @@ class Board
     @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
-  def display_board
-    puts <<-HEREDOC
+  def generate_board
+    <<-HEREDOC
 
          #{@cells[0]} | #{@cells[1]} | #{@cells[2]}
         ---+---+---

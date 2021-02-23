@@ -87,7 +87,7 @@ def display_congratulations
 \n\n".green
 end
 
-def winner(player)
+def print_winner(player)
   "                                           winner is #{player}".green
 end
 
@@ -106,6 +106,28 @@ end
 
 def display_play_again
   '                                      Press "y" to play again'
+end
+
+def ask_move(player)
+  puts display_turn_prompt(player)
+  position = gets.chomp.to_i
+  return position if @board.valid_move?(position)
+
+  puts invalid_move_warning
+  ask_move(player)
+end
+
+def display_board(board)
+  puts board
+end
+
+def display_winner(game)
+  if game.player_winner.nil?
+    puts display_draw
+  else
+    puts display_congratulations
+    puts print_winner(game.player_winner)
+  end
 end
 
 puts intro.green
@@ -145,6 +167,7 @@ play_again = 'y'
 while play_again == 'y'
   new_game = Game.new(player1, player2)
   new_game.play
+  display_winner(new_game)
   puts display_play_again
   play_again = gets.chomp
   display_clear
