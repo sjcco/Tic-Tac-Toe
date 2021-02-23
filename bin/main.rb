@@ -1,83 +1,41 @@
 #!/usr/bin/env ruby
+require_relative '../lib/display'
+require_relative '../lib/game'
+require_relative '../lib/board'
 require 'colorize'
-def board
-  cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  puts <<-HEREDOC
 
-        #{cells[0]}  | #{cells[1]} | #{cells[2]}
-        ---+---+---
-        #{cells[3]}  | #{cells[4]} | #{cells[5]}
-        ---+---+---
-        #{cells[6]}  | #{cells[7]} | #{cells[8]}
-
-  HEREDOC
-end
-
-puts "
- █████     ███               █████                           █████
- ░░███     ░░░               ░░███                           ░░███
- ███████   ████   ██████     ███████    ██████    ██████     ███████    ██████   ██████
-░░░███░   ░░███  ███░░███   ░░░███░    ░░░░░███  ███░░███   ░░░███░    ███░░███ ███░░███
-  ░███     ░███ ░███ ░░░      ░███      ███████ ░███ ░░░      ░███    ░███ ░███░███████
-  ░███ ███ ░███ ░███  ███     ░███ ███ ███░░███ ░███  ███     ░███ ███░███ ░███░███░░░
-  ░░█████  █████░░██████      ░░█████ ░░████████░░██████      ░░█████ ░░██████ ░░██████
-  ░░░░░  ░░░░░  ░░░░░░        ░░░░░   ░░░░░░░░  ░░░░░░        ░░░░░   ░░░░░░   ░░░░░░
-
-
-                                                                                       ".green
-puts ''
-puts '                                   Press enter to start'
+puts intro.green
 gets
-system('clear') || system('cls')
-puts '
-████████╗██╗  ██╗███████╗    ██████╗ ██╗   ██╗██╗     ███████╗███████╗
-╚══██╔══╝██║  ██║██╔════╝    ██╔══██╗██║   ██║██║     ██╔════╝██╔════╝
-   ██║   ███████║█████╗      ██████╔╝██║   ██║██║     █████╗  ███████╗
-   ██║   ██╔══██║██╔══╝      ██╔══██╗██║   ██║██║     ██╔══╝  ╚════██║
-   ██║   ██║  ██║███████╗    ██║  ██║╚██████╔╝███████╗███████╗███████║
-   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝
-'.yellow
-puts ''
-puts '-Players will take turns putting their mark in the empty spaces.'
-puts '-Empty spaces are identified by numbers from 1-9.'
-puts '-Type the number of the cell where you want to write your mark.'
-puts '-In order to win the game, a player must place three of their marks in a horizontal, vertical, or diagonal row.'
-puts ''
-puts 'Press enter to continue'
+display_clear
+puts display_rules.yellow
+
 gets
-system('clear') || system('cls')
+display_clear
 
 player1 = ''
 while player1.empty?
-  puts 'What is player 1 name?'.blue
+  puts display_name1_prompt.blue
   player1 = gets.chomp
 end
 player2 = ''
 while player2.empty?
-  puts 'What is player 2 name? (must be different from player 1)'.red
+  puts display_name2_prompt.red
   player2 = gets.chomp
   player2 = '' if player1 == player2
 end
-system('clear') || system('cls')
-print '
-        Player 1            Player 2
-          █████╗             ██╗  ██╗
-        ██╔═══██╗            ╚██╗██╔╝
-        ██║   ██║             ╚███╔╝
-        ██║   ██║             ██╔██╗
-        ╚██████╔╝            ██╔╝ ██╗
-         ╚═════╝             ╚═╝  ╚═╝
-'
+display_clear
+print display_symbol_banner
 sleep 2
-system('clear') || system('cls')
+display_clear
 puts '                                READY'
 sleep 0.7
-system('clear') || system('cls')
+display_clear
 puts '                                 SET'
 sleep 0.7
-system('clear') || system('cls')
+display_clear
 puts '                                  GO'
 sleep 0.7
+<<<<<<< Updated upstream
 system('clear') || system('cls')
 
 9.times do
@@ -101,3 +59,20 @@ system('clear') || system('cls')
   end
 end
 puts 'its a tie'
+=======
+display_clear
+
+new_game = Game.new(player1, player2)
+new_game.play
+
+# case result
+# when 1
+#   puts congratulations
+#   puts "#{player1} won"
+# when 2
+#   puts congratulations
+#   puts "#{player2} won"
+# else
+#   puts draw
+# end
+>>>>>>> Stashed changes
