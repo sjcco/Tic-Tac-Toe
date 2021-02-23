@@ -104,7 +104,6 @@ def display_draw
 ".yellow
 end
 
-
 puts intro.green
 gets
 display_clear
