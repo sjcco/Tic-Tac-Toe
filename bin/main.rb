@@ -35,44 +35,7 @@ sleep 0.7
 display_clear
 puts '                                  GO'
 sleep 0.7
-<<<<<<< Updated upstream
-system('clear') || system('cls')
-
-9.times do
-  player1_turn = true
-  while player1_turn
-    puts "      #{player1} pick a cell".blue
-    board
-    cell = gets.chomp
-    system('clear') || system('cls')
-    puts 'not in range' unless cell.to_i.between?(1, 9)
-    player1_turn = false if cell.to_i.between?(1, 9)
-  end
-  player2_turn = true
-  while player2_turn
-    puts "      #{player2} pick a cell".red
-    board
-    cell = gets.chomp
-    system('clear') || system('cls')
-    puts 'not in range' unless cell.to_i.between?(1, 9)
-    player2_turn = false if cell.to_i.between?(1, 9)
-  end
-end
-puts 'its a tie'
-=======
 display_clear
 
 new_game = Game.new(player1, player2)
 new_game.play
-
-# case result
-# when 1
-#   puts congratulations
-#   puts "#{player1} won"
-# when 2
-#   puts congratulations
-#   puts "#{player2} won"
-# else
-#   puts draw
-# end
->>>>>>> Stashed changes
