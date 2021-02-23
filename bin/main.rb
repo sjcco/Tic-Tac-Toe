@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require_relative '../lib/display'
 require_relative '../lib/game'
 require_relative '../lib/board'
 require 'colorize'
@@ -88,7 +89,7 @@ def display_congratulations
 end
 
 def winner(player)
-  "                                           winner is #{player}".green
+  "                                           winner is #{player}\n\n".green
 end
 
 def display_draw
@@ -102,6 +103,10 @@ def display_draw
    █████    █████   ░░█████████     █████   █████    ██████████   █████   █████ █████   █████    ░░███ ░░███      ███
   ░░░░░    ░░░░░     ░░░░░░░░░     ░░░░░   ░░░░░    ░░░░░░░░░░   ░░░░░   ░░░░░ ░░░░░   ░░░░░      ░░░   ░░░      ░░░
 ".yellow
+end
+
+def display_play_again
+  '                                      Press "y" to play again'
 end
 
 puts intro.green
@@ -137,5 +142,11 @@ puts '                                  GO'
 sleep 0.7
 display_clear
 
-new_game = Game.new(player1, player2)
-new_game.play
+play_again = 'y'
+while play_again == 'y'
+  new_game = Game.new(player1, player2)
+  new_game.play
+  puts display_play_again
+  play_again = gets.chomp
+  display_clear
+end
