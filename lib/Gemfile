@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+# Print in colors
+gem 'colorize', '~> 0.8.1'
