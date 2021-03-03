@@ -28,4 +28,17 @@ describe Board do
       expect(board.valid_move?(1)).to eql(false)
     end
   end
+
+  describe '#full?' do
+    it 'return false if the board is not full' do
+      board = Board.new
+      expect(board.full?).to eql false
+    end
+
+    it 'return true if the board is full' do
+      board = Board.new
+      board.cells.each_with_index { |_x, y| board.update_board(y, 'G') }
+      expect(board.full?).to eql true
+    end
+  end
 end
