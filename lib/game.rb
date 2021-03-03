@@ -40,7 +40,7 @@ class Game
   end
 
   public
-  
+
   def switch_player
     @active_player = @active_player == @player1 ? @player2 : @player1
   end
