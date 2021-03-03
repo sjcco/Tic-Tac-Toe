@@ -31,8 +31,6 @@ class Game
     end
   end
 
-  public
-
   def move(player)
     cell = ask_move(player)
     player_symbol = player == @player1 ? 'O' : 'X'
@@ -41,6 +39,8 @@ class Game
     display_board(@board.generate_board)
   end
 
+  public
+  
   def switch_player
     @active_player = @active_player == @player1 ? @player2 : @player1
   end
