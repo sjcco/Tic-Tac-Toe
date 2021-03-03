@@ -53,4 +53,10 @@ class Game
 
     @player_winner = nil
   end
+
+  # used for the spec tests
+  def force_winner(player)
+    player_symbol = player == @player1 ? 'O' : 'X'
+    WIN_CONDITION[0].each { |x| @board.update_board(x + 1, player_symbol) }
+  end
 end
