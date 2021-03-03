@@ -29,7 +29,10 @@
 - Type the number of the cell where you want to write your mark.
 - In order to win the game, a player must place three of their marks in a row, horizontal, vertical, or diagonal.
 
+## Testing Instructions
 
+- In the terminal use 'rspec' to run the tests
+- For a more detailed explanation of the tests run 'rspec --format documentation'
 
 ## Authors
 
