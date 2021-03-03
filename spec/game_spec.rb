@@ -13,4 +13,17 @@ describe Game do
       expect(game.game_over('carlos')).to eql false
     end
   end
+
+  describe '#winner_is' do
+    it 'returns player name if the is a winner' do
+      game = Game.new('carlos', 'juan')
+      game.force_winner('carlos')
+      expect(game.winner_is).to eql 'carlos'
+    end
+
+    it 'returns nil if there is no winner' do 
+      game = Game.new('carlos', 'juan')
+      expect(game.winner_is).to eql nil
+    end
+  end
 end

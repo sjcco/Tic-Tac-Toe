@@ -10,6 +10,7 @@ class Game
     @board = Board.new
     @player1 = player1
     @player2 = player2
+    @active_player = @player1
     @player_winner = nil
   end
 
