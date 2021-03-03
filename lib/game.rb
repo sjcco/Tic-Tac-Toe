@@ -4,7 +4,7 @@ class Game
     [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
     [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
   ].freeze
-  attr_reader :player_winner
+  attr_reader :player_winner, :active_player
 
   def initialize(player1, player2)
     @board = Board.new
@@ -19,6 +19,8 @@ class Game
     winner_is
   end
 
+  private
+
   def player_moves
     @active_player = @player1
     until @board.full?
@@ -28,6 +30,8 @@ class Game
       @active_player = switch_player
     end
   end
+
+  public
 
   def move(player)
     cell = ask_move(player)
