@@ -15,14 +15,14 @@ class Game
 
   def play
     player_moves
-    game_over
+    winner_is
   end
 
   def player_moves
     @active_player = @player1
     until @board.full?
       move(@active_player)
-      break if winner_is(@active_player)
+      break if game_over(@active_player)
 
       @active_player = switch_player
     end
@@ -40,7 +40,7 @@ class Game
     @active_player = @active_player == @player1 ? @player2 : @player1
   end
 
-  def winner_is(player)
+  def game_over(player)
     player_symbol = player == @player1 ? 'O' : 'X'
     combo = @board.cells
     WIN_CONDITION.any? do |condition|
@@ -48,8 +48,8 @@ class Game
     end
   end
 
-  def game_over
-    return @player_winner = @active_player if winner_is(@active_player)
+  def winner_is
+    return @player_winner = @active_player if game_over(@active_player)
 
     @player_winner = nil
   end
